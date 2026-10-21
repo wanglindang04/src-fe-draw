@@ -1,0 +1,8 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Notification icon">
+<circle id="Ellipse 2" cx="50" cy="50" r="50" fill="#EBF6E9"/>
+<g id="check- circle2">
+<path id="Subtract" d="M75.5 50C75.5 63.8071 64.3071 75 50.5 75C36.6929 75 25.5 63.8071 25.5 50C25.5 36.1929 36.6929 25 50.5 25C64.3071 25 75.5 36.1929 75.5 50ZM63.7383 40.5117C62.6399 39.4134 60.8601 39.4134 59.7617 40.5117L46.75 53.5234L41.2383 48.0117C40.1399 46.9134 38.3601 46.9134 37.2617 48.0117C36.1634 49.1101 36.1634 50.8899 37.2617 51.9883L44.7617 59.4883C45.8601 60.5866 47.6399 60.5866 48.7383 59.4883L63.7383 44.4883C64.8366 43.3899 64.8366 41.6101 63.7383 40.5117Z" fill-rule="evenodd" clip-rule="evenodd" fill="#50A243"/>
+</g>
+</g>
+</svg>

@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Layout 2 cột (panel ảnh + form) chỉ khi màn đủ rộng VÀ nằm ngang.
+   Tablet dọc (vd iPad Pro 13" 1032x1376) dùng layout 1 cột như mobile. */
+@custom-variant desktop (@media (min-width: 64rem) and (orientation: landscape));
 
+/* Màn desktop thấp (vd 24" 1920x1080 sau khi trừ taskbar + thanh trình duyệt ≈ 900px):
+   thu gọn khoảng cách để form không phải cuộn. Thiết kế gốc dựa trên khung đủ 1080px. */
+@custom-variant short (@media (min-width: 64rem) and (orientation: landscape) and (max-height: 1000px));
+@custom-variant tiny (@media (min-width: 64rem) and (orientation: landscape) and (max-height: 860px));
+
+/* Design tokens lấy từ Figma (VSAR Website) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+
+  --color-primary: #0057e5;
+  --color-primary-hover: #0049c2;
+  --color-title: #000a1a;
+  --color-body: #1a2a45;
+  --color-muted: #667183;
+  --color-placeholder: #8c94a1;
+  --color-border: #ccd0d5;
+  --color-disabled: #e6e8eb;
+  --color-danger: #dc0a15;
+  --color-secondary: #404d64;
+  --color-surface: #f2f3f4;
+  --color-hover: #f0f6ff;
+  --color-divider: #efefef;
+
+  --shadow-popover: 0 0 24px rgba(0, 0, 0, 0.06);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Chuyển trang Đăng ký học sinh ⇄ nhà trường (React <ViewTransition>):
+   nền tab trượt sang, nội dung form mờ dần. */
+::view-transition-group(.tab-pill) {
+  animation-duration: 280ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+::view-transition-group(.tab-label) {
+  animation-duration: 280ms;
+}
+::view-transition-old(.register-fade) {
+  animation: 120ms ease-out both register-fade-out;
+}
+::view-transition-new(.register-fade) {
+  animation: 220ms ease-out 80ms both register-fade-in;
+}
+@keyframes register-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes register-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }
 
+/* Thanh cuộn mảnh cho dropdown (Figma: thumb 4px #e6e8eb) */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-disabled) transparent;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-body);
 }
